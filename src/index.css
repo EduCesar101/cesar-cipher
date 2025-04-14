@@ -4,8 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: aliceblue;
-  /* color: rgba(255, 255, 255, 0.87); */
+  color: rgba(255, 255, 255, 0.87);
   background-image: url("./assets/typerwriter-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;

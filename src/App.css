@@ -1,0 +1,52 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 1.2em;
+  border: 2px solid aliceblue;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.card label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.card textarea {
+  font-family: "Courier Prime", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  size: 80px;
+}
+
+.card input{
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  margin: 10px;
+}
+
+.buttons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.buttons button{
+  margin: 10px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+  /* border: 2px solid aliceblue; */
+  border-radius: 20px;
+  background-color: #242424;
+}
+

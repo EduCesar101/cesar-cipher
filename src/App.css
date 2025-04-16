@@ -1,24 +1,33 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* max-width: 1280px; */
+  min-width: max-content;
+  margin: 0px;
+  /* padding: 2rem; */
   text-align: center;
   color: aliceblue;
+  height: inherit;
 }
 
-.card {
-  padding: 1.2em;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 25px;
   border: 2px solid aliceblue;
   border-radius: 5px;
   font-size: 18px;
+  box-sizing: border-box;
+  max-width: fit-content;
 }
 
-.card label {
+.container label {
   text-align: left;
   font-weight: bold;
 }
 
-.card textarea {
+.container textarea {
   font-family: "Courier Prime", monospace;
   font-weight: 400;
   font-style: normal;
@@ -26,7 +35,7 @@
   size: 80px;
 }
 
-.card input{
+.container input{
   font-size: 20px;
   font-weight: bolder;
   text-align: center;
@@ -34,19 +43,52 @@
 }
 
 .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-top: 10px;
   margin-bottom: 10px;
+  max-width: fit-content;
 }
 
 .buttons button{
   margin: 10px;
 }
 
-.main {
+.card {
   display: flex;
+  margin: 0px;
   flex-direction: column;
-  padding: 80px;
+  flex-wrap: wrap;
+  padding: 10px 50px 25px 50px;
   /* border: 2px solid aliceblue; */
   border-radius: 20px;
   background-color: #242424;
+  box-sizing: border-box;
+}
+
+.fields-container {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 10px 20px 10px 20px; */
+  /* padding: 50px; */
+  margin: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  max-width: fit-content;
 }

@@ -35,18 +35,23 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* min-width: max-content; */
+  width: auto;
+  height: inherit;
   background-color: #242424d2;
-  padding-left: 30px;
-  padding-right: 30px;
+  /* padding-left: 30px;
+  padding-right: 30px; */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  display: flex;
+  align-self: center;
 }
 
 button {
@@ -79,4 +84,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+html {
+  /* min-width: max-content; */
+  height: -webkit-fill-available;
 }

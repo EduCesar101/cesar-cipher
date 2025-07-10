@@ -8,6 +8,8 @@ function App() {
   const [cText, setCText] = useState('')
   const [deslocamento, setDeslocamento] = useState(0)
   const [inputValue , setInputValue] = useState('')
+  const [ciferType, setCiferType] = useState(0)
+  let ciferNames = ["Cifra de César", "Cifra de Vigenere", "Cifra de Transposição"]
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault();
@@ -20,6 +22,7 @@ function App() {
     setCText(() => cmsg)
   }
 
+  // Copy text to clipboard
   function copyToClipboard(){
     navigator.clipboard.writeText(cText);
     alert("Password Copied!");
@@ -29,8 +32,16 @@ function App() {
     <>
     <main>
       <div className="card">
-        <h1>Cifra de César</h1>
+        <h1>deCIFER</h1>
         <form onSubmit={handleSubmit}>
+
+          <select name="" id="" onChange={(e) => setCiferType(parseInt(e.target.value))}>
+            <option value="0" selected>Cifra de César</option>
+            <option value="1">Cifra de Vigenere</option>
+            <option value="2">Cifra de Transposição</option>
+          </select>
+          <h3>{ciferNames[ciferType]}</h3>
+
         <div className="container">
           <label htmlFor="">Texto Normal</label>
           <br />  
@@ -38,13 +49,17 @@ function App() {
           placeholder='Digite o texto...' rows={4} cols={35}></textarea>
           <br />
           <br />
+          
+          {ciferType == 0 && (
+            <div className='buttons'>
+              <label htmlFor="">Deslocamento</label>
+              <br />
 
-            <label htmlFor="">Deslocamento</label>
-          <div className='buttons'>
-            <button onClick={() => {
-              if(deslocamento > 0){
-                setDeslocamento(deslocamento - 1)
-              }
+          <button onClick={() => {
+            if(deslocamento > 0){
+              setDeslocamento(deslocamento - 1)
+            }
+              
             }}>-</button>
             <input type="number" value={deslocamento} onChange={(e) => setDeslocamento(e.target.valueAsNumber)} min={0} max={25} maxLength={2} readOnly/>
             <button onClick={() => {
@@ -53,6 +68,7 @@ function App() {
               }
             }}>+</button>
           </div>
+          )}
           </div>
           <div className='buttons'>
             <button type='submit' onClick={() => setInputValue('C')}>Criptografar</button>

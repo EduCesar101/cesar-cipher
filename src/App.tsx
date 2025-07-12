@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import { cryptText, decryptText } from './modules/index'
+import { cryptCesar, decryptCesar } from './modules/cesarCipher'
+import { cryptVigenere, decryptVigenere } from './modules/vigenereCipher'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
   const [cText, setCText] = useState('')
   const [deslocamento, setDeslocamento] = useState(0)
   const [inputValue , setInputValue] = useState('')
+  const [password, setPassword] = useState('')
   const [ciferType, setCiferType] = useState(0)
   let ciferNames = ["Cifra de César", "Cifra de Vigenere", "Cifra de Transposição"]
 
@@ -15,9 +17,23 @@ function App() {
     e.preventDefault();
     let cmsg : string;
     if(inputValue == 'C'){
-      cmsg = cryptText(message, deslocamento)
+      switch(ciferType){
+        case 0:
+          cmsg = cryptCesar(message, deslocamento)
+          break
+        
+        case 1:
+          cmsg = cryptVigenere(message, password)
+      }
     } else {
-      cmsg = decryptText(message, deslocamento)
+      switch(ciferType){
+        case 0:
+          cmsg = decryptCesar(message, deslocamento)
+          break
+
+        case 1:
+          cmsg = decryptVigenere(message, password)
+      }
     }
     setCText(() => cmsg)
   }
@@ -40,6 +56,8 @@ function App() {
             <option value="1">Cifra de Vigenere</option>
             <option value="2">Cifra de Transposição</option>
           </select>
+
+          {/* Nome da Cifra */}
           <h3>{ciferNames[ciferType]}</h3>
 
         <div className="container">
@@ -50,10 +68,11 @@ function App() {
           <br />
           <br />
           
+          {/*Cifra de Cesar*/}
           {ciferType == 0 && (
-            <div className='buttons'>
+          <div className='passCifer'>
               <label htmlFor="">Deslocamento</label>
-              <br />
+          <br />
 
           <button onClick={() => {
             if(deslocamento > 0){
@@ -69,6 +88,15 @@ function App() {
             }}>+</button>
           </div>
           )}
+
+          {/*Cifra de Vigenere*/}
+          {ciferType == 1 && (
+            <div className="passCifer">
+              <label htmlFor="">Senha</label> <br />
+              <input type="text" onChange={(e) => setPassword(e.target.value)} max={25}/>
+            </div>
+          )}
+
           </div>
           <div className='buttons'>
             <button type='submit' onClick={() => setInputValue('C')}>Criptografar</button>

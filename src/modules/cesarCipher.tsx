@@ -1,4 +1,4 @@
-export function cryptText(mensagem: String, deslocamento: number){
+export function cryptCesar(mensagem: String, deslocamento: number){
     let resultado = "";
     deslocamento = deslocamento % 26; // Garante que o deslocamento esteja entre 0 e 25
 
@@ -29,7 +29,7 @@ export function cryptText(mensagem: String, deslocamento: number){
     return resultado;
 }
 
-export function decryptText(mensagem: String, deslocamento: number){
+export function decryptCesar(mensagem: String, deslocamento: number){
     let resultado = "";
     deslocamento = deslocamento % 26; // Garante que o deslocamento esteja entre 0 e 25
 

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { cryptCesar, decryptCesar } from './modules/cesarCipher'
 import { cryptVigenere, decryptVigenere } from './modules/vigenereCipher'
+import { cryptTransposition, decryptTransposition } from './modules/transpositionCipher'
 
 function App() {
 
@@ -24,6 +25,11 @@ function App() {
         
         case 1:
           cmsg = cryptVigenere(message, password)
+          break
+        
+        case 2:
+          cmsg = cryptTransposition(message, password)
+          break
       }
     } else {
       switch(ciferType){
@@ -33,6 +39,11 @@ function App() {
 
         case 1:
           cmsg = decryptVigenere(message, password)
+          break
+        
+        case 2:
+          cmsg = decryptTransposition(message, password)
+          break
       }
     }
     setCText(() => cmsg)
@@ -89,8 +100,8 @@ function App() {
           </div>
           )}
 
-          {/*Cifra de Vigenere*/}
-          {ciferType == 1 && (
+          {/*Cifra de Vigenere ou Cifra de Transposição*/}
+          {ciferType !== 0 && (
             <div className="passCifer">
               <label htmlFor="">Senha</label> <br />
               <input type="text" onChange={(e) => setPassword(e.target.value)} max={25}/>
